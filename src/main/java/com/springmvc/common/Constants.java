@@ -7,9 +7,9 @@ package com.springmvc.common;
  * @author zhengkaipei
  * @since 2016年11月26日
  */
-public class Constants {
+public class Constants { 
 	
 	public final static String SYSTEM_NAME = "KPCQ"; //系统名称
 	
-	public final static String SESSION_TOKEN = "_SYS_KPCQ_SESSION_KEY"; //作为session标记的变量， 用户登陆后赋予该变量一个随机token
+	public final static String SESSION_TOKEN = "_SYS_KPCQ_SESSION_KEY"; //作为session标记的变量，用户登陆后赋予该变量一个随机token
 }
