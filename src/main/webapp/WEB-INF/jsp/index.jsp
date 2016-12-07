@@ -7,6 +7,5 @@
 <title>Insert title here</title>
 </head>
 <body>
-	我家彩芹傻呀傻！
 </body>
 </html>
