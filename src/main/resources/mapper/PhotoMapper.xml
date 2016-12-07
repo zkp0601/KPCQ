@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springmvc.dao.IPhotoDAO">
+	<insert id="insertPhoto" parameterType="Photo">
+		INSERT INTO photos( user_id, photo_url,date,description ) VALUES ( #{user_id}, #{photo_url},#{date},#{description} )
+	</insert>
+	
+	<select id="queryPhotoById" parameterType="int" resultType="Photo">
+		SELECT* FROM photos WHERE id=#{id} 
+	</select>
+	
+	<!--  
+    <resultMap type="Photo" id="photos">
+    <id column="pho_id" property="id"/>
+    <result column="user_id" property="user_id"/>
+    <result column="photo_url" property="photo_url"/>
+    <result column="description" property="description"/>
+     <result column="date" property="date"/>
+    </resultMap>-->
+	
+	<select id="queryPhotoByLabels" parameterType="list" resultType="Photo">
+		SELECT photos.id,photos.user_id,photos.photos_url,photos.description,photos.date
+		 FROM photos,label_photo WHERE photos.id=label_photo.photo_id
+		 AND label_photo.labelname IN (<foreach collection="list" index="index" item="labelname" separator=", ">#{labelname}</foreach>)
+	</select>
+	
+	<select id="queryPhotoByUserId" parameterType="int" resultType="Photo">
+	SELECT distinct photos.id,photos.user_id,photos.photo_url,photos.description,photos.date FROM photos,follow
+	  WHERE follow.follower_id = #{user_id} AND photos.user_id = follow.followed_id OR photo.user_id=#{user_id}
+	   ORDER BY photos.date DESC
+	</select>
+</mapper>

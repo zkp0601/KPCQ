@@ -7,8 +7,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<!-- 命名空间,设置别名 -->
 	<typeAliases>
 		<typeAlias alias="User" type="com.springmvc.model.User"></typeAlias>
+		<typeAlias alias="Photo" type="com.springmvc.model.Photo"></typeAlias>
 	</typeAliases>
-	
 	<!-- 映射map -->
 	<mappers>
 	</mappers>

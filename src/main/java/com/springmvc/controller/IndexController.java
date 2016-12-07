@@ -20,6 +20,8 @@ public class IndexController extends BaseController{
 		return "index";
 	}
 	
+	
+	
 	/** 返回相关数据， 非页面 */
 	@RequestMapping("/getData")
 	@ResponseBody

@@ -13,13 +13,14 @@ public class User implements Serializable{
 	private int user_id;
 	private String username;
 	private String password;
-	
+	private String email;
 	public User(){
 		
 	}
-	public User(String username, String password){
+	public User(String username, String password,String email){
 		this.username = username;
 		this.password = password;
+		this.email=email;
 	}
 	public String getUsername() {
 		return username;
@@ -38,6 +39,12 @@ public class User implements Serializable{
 	}
 	public void setId(int user_id) {
 		this.user_id = user_id;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

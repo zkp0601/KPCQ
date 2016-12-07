@@ -59,7 +59,7 @@ public class SessionTimeoutFilter extends HttpServlet implements Filter{
 		logger.info(contextPath);
 		
 		if((session == null || null == session.getAttribute(Constants.SESSION_TOKEN))
-				&& !uri.contains("/login") && !uri.contains("/logout") && !uri.contains("/static")){
+				&& !uri.contains("/login") && !uri.contains("/logout") && !uri.contains("/static")&&!uri.contains("/register")){
 			
 			logger.info("当前请求:{} 被拦截, 并被重定向至登录页面", uri);
 			response.sendRedirect(contextPath + "/login");

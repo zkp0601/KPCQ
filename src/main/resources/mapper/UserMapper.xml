@@ -5,7 +5,7 @@
 
 <mapper namespace="com.springmvc.dao.IUserDAO">
 	<insert id="insertUser" parameterType="User">
-		INSERT INTO users( username, password ) VALUES ( #{username}, #{password} )
+		INSERT INTO users( username, password,userEmail ) VALUES ( #{username}, #{password},#{email} )
 	</insert>
 	
 	<select id="queryUserById" parameterType="String" resultType="HashMap">
@@ -18,5 +18,8 @@
 	
 	<select id="selectUser_namesByIds" resultType="User">
 		SELECT user_id, username FROM users WHERE user_id IN (<foreach collection="array" index="index" item="user_id" separator=", ">#{user_id}</foreach>)
+	</select>
+	<select id="queryUserpasswordByUsername" parameterType="String" resultType="User">
+	 SELECT *from users WHERE username=#{username}
 	</select>
 </mapper>

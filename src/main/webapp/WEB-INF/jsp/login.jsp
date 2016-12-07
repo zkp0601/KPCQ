@@ -17,22 +17,21 @@
 <body>
 	<div class="page-container">
 		<h1>KPCQ</h1>
-		<form action="login/" method="post">
+		<form action="login/validate" method="post">
 			<c:if test="${login_result == false}">
 				<div class="alert alert-danger" style="width:80%;margin-left:10%; margin-bottom:0px; border:none; font-weight:bold;">用户名或者密码错误</div>
 			</c:if>
-			<input type="text" name="username" class="username" placeholder="用户名">
-			<input type="password" name="password" class="password"
+			<input type="text" name="userName" class="username" placeholder="用户名">
+			<input type="password" name="userPassword" class="password"
 				placeholder="密码">
 			<div class="error">
 				<span>+</span>
 			</div>
 
 			<p class="submit">
-				<button type="submit" tabindex="100" />
-				登录
-				</button>
-				<a href="index/register"
+				<input type="button" id="submitBtn" tabindex="100" value="登录"／>
+				
+				<a href="register"
 					style="float: right; margin-top: 5%; text-decoration: none; color: white;">点此注册</a>
 			</p>
 		</form>
@@ -51,5 +50,36 @@
 	<div class="clear"></div>
 </body>
 </html>
+<script type="text/javascript">
+	$(function() {
+		
+		$("#submitBtn").click(function(){
+			var userValue=$(".username").val();
+			var passValue=$(".password").val();
+			
+			if(userValue==""||passValue=="") {
+				alert("wrong");
+				return;
+			}
+			$.ajax({
+				url:'login/validate',
+				datatype:'json',
+				type:'post',
+	            data:{userName:userValue,userPassword:passValue},
+				
+				success:function(data){
+					
+					if(data=="true"){
+						window.location.href ="homepage";
+					}
+					
+				},
+				error:function(err){
+					alert(err);
+				}
+			})
+		});
+	});
+</script>
 <script src='<c:url value="/static/js/jquery.min.js"></c:url>' />
 <script src='<c:url value="/static/js/bootstrap.min.js"></c:url>' />
